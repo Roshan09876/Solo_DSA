@@ -58,7 +58,7 @@ public class Add_task_to_Job extends JFrame {
 
                 Connection connection = null;
                 try {
-                    connection = DriverManager.getConnection("jdbc:mysql://localhost3306/dsa-assignment","root","roshan09876");
+                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsa-assignment","root","roshan09876");
                     System.out.println("Connection Successful");
 
                 }catch (SQLException sqlException){
