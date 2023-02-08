@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Create_Job extends JFrame {
@@ -56,6 +57,26 @@ public class Create_Job extends JFrame {
 
                 }
 //                fetching data from textField of Create_Job
+                String job = jTextField1.getText();
+                String jobNAME = jTextField2.getText();
+
+                String insertSQL = "INSERT INTO create_job (job, jobNAME) VALUES (?, ?)";
+
+                try{
+                   assert  connection != null;
+
+                   try(PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)){
+                       preparedStatement.setString(1, job);
+                       preparedStatement.setString(2,jobNAME);
+
+                       int rowCount = preparedStatement.executeUpdate();
+                       System.out.println(rowCount + "Row Inserted Successfully");
+                   }
+
+                }catch (SQLException sqlException){
+                    System.out.println("Insertion Failed " + sqlException.getMessage());
+
+                }
             }
         });
 
