@@ -43,7 +43,6 @@ public class Add_Task extends JFrame {
         jButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                fetching text written in the text field in string variable
 
 
                 Connection connection = null;
@@ -58,17 +57,21 @@ public class Add_Task extends JFrame {
                     System.out.println("Failed to connect");
 
                 }
+ //                fetching text written in the text field in string variable
                 String TaskID = jTextField1.getText();
                 String Task = jTextField2.getText();
 
                 String insertSQL = "INSERT INTO addtask (TaskID, Task) VALUES (?, ?)";
 
-                try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
-                    preparedStatement.setString(1, TaskID);
-                    preparedStatement.setString(2, Task);
+                try {
+                    assert connection != null;
+                    try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+                        preparedStatement.setString(1, TaskID);
+                        preparedStatement.setString(2, Task);
 
-                    int rowCount = preparedStatement.executeUpdate();
-                    System.out.println(rowCount + " row(s) inserted");
+                        int rowCount = preparedStatement.executeUpdate();
+                        System.out.println(rowCount + " row(s) inserted");
+                    }
                 } catch (SQLException sqlException) {
                     System.out.println("Insertion failed: " + sqlException.getMessage());
                 }

@@ -2,6 +2,11 @@ package Assigment;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Create_Job extends JFrame {
 
@@ -35,6 +40,24 @@ public class Create_Job extends JFrame {
         jButton.setText("OK");
         jButton.setBounds(140,150,80,30);
         jButton.setFocusable(false);
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Connection connection = null;
+
+                try {
+                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsa-assignment","root","roshan09876");
+                    System.out.println("Connection Successful");
+
+                }catch (SQLException sqlException){
+                    sqlException.printStackTrace();
+                    System.out.println("Error Connection Failed");
+
+                }
+//                fetching data from textField of Create_Job
+            }
+        });
 
 
 
