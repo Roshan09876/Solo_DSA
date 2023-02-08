@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Add_Task extends JFrame {
@@ -43,18 +44,35 @@ public class Add_Task extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                fetching text written in the text field in string variable
-                String taskID = jTextField1.getText();
-                String Task = jTextField2.getText();
-
-                try{
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsa-assignment", "root", "roshan09876");
 
 
+                Connection connection = null;
+                try {
+                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsa-assignment", "root", "roshan09876");
 
-                }catch (SQLException sqlException){
+                    System.out.println("Connection Successful");
+
+
+                } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
+                    System.out.println("Failed to connect");
 
                 }
+                String TaskID = jTextField1.getText();
+                String Task = jTextField2.getText();
+
+                String insertSQL = "INSERT INTO addtask (TaskID, Task) VALUES (?, ?)";
+
+                try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+                    preparedStatement.setString(1, TaskID);
+                    preparedStatement.setString(2, Task);
+
+                    int rowCount = preparedStatement.executeUpdate();
+                    System.out.println(rowCount + " row(s) inserted");
+                } catch (SQLException sqlException) {
+                    System.out.println("Insertion failed: " + sqlException.getMessage());
+                }
+
 
             }
         });
