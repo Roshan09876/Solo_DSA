@@ -45,6 +45,8 @@ public class Scheduling_Job extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+//                Start Database Connection
+
                 Connection connection = null;
 
                 try{
@@ -57,6 +59,7 @@ public class Scheduling_Job extends JFrame {
                 }
             }
         });
+//        End Database Connection
 
 
 

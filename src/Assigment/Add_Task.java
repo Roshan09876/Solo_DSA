@@ -44,7 +44,7 @@ public class Add_Task extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
+//                Start Connection in Sql Database
                 Connection connection = null;
                 try {
                     connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsa-assignment", "root", "roshan09876");
@@ -57,6 +57,9 @@ public class Add_Task extends JFrame {
                     System.out.println("Failed to connect");
 
                 }
+//                End Connection in SQl Database
+
+
  //                fetching text written in the text field in string variable
                 String TaskID = jTextField1.getText();
                 String Task = jTextField2.getText();
@@ -75,7 +78,6 @@ public class Add_Task extends JFrame {
                 } catch (SQLException sqlException) {
                     System.out.println("Insertion failed: " + sqlException.getMessage());
                 }
-
 
             }
         });

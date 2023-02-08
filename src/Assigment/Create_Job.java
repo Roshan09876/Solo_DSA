@@ -45,6 +45,8 @@ public class Create_Job extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+//                Start Connection in Database
+
                 Connection connection = null;
 
                 try {
@@ -56,6 +58,9 @@ public class Create_Job extends JFrame {
                     System.out.println("Error Connection Failed");
 
                 }
+//                End Connection in database
+
+
 //                fetching data from textField of Create_Job
                 String job = jTextField1.getText();
                 String jobNAME = jTextField2.getText();
