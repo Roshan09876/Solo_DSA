@@ -1,7 +1,9 @@
 package Assigment;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -9,44 +11,55 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.*;
+
 public class Create_Job extends JFrame {
 
-    Create_Job(){
+    Create_Job() {
 
-        JLabel jLabel1 = new JLabel();
-        jLabel1.setText("Job :- ");
-        jLabel1.setFont(new Font("Arial", Font.PLAIN,20));
-        jLabel1.setBounds(92,50,80,30);
+        setTitle("Create Job");
+        setSize(450, 320);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JTextField jTextField1 = new JTextField();
-        jTextField1.setBounds(160,55,100,30);
-        jTextField1.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-        jTextField1.setColumns(10);
+        JPanel mainPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(10, 10, 10, 10);
 
+        JLabel jobLabel = new JLabel("Job Id :- ");
+        jobLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        mainPanel.add(jobLabel, constraints);
 
+        JTextField jobField = new JTextField(10);
+        jobField.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        mainPanel.add(jobField, constraints);
 
-        JLabel jLabel2 = new JLabel();
-        jLabel2.setText("Job name :- ");
-        jLabel2.setFont(new Font("Arial", Font.PLAIN,20));
-        jLabel2.setBounds(40,90,140,30);
+        JLabel jobNameLabel = new JLabel("Job name :- ");
+        jobNameLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        mainPanel.add(jobNameLabel, constraints);
 
-        JTextField jTextField2 = new JTextField();
-        jTextField2.setBounds(160,94,120,30);
-        jTextField2.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-        jTextField2.setColumns(10);
+        JTextField jobNameField = new JTextField(10);
+        jobNameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        mainPanel.add(jobNameField, constraints);
 
-
-
-        JButton jButton = new JButton();
-        jButton.setText("OK");
-        jButton.setBounds(140,150,80,30);
-        jButton.setFocusable(false);
-        jButton.addActionListener(new ActionListener() {
+        JButton okButton = new JButton("OK");
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        constraints.anchor = GridBagConstraints.LINE_END;
+        mainPanel.add(okButton, constraints);
+        okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String job = jTextField1.getText();
-                String jobNAME = jTextField2.getText();
+                String job = jobField.getText();
+                String jobNAME = jobNameField.getText();
                 boolean validationSuccessful = false;
 
                 if (job.trim().isEmpty() && jobNAME.trim().isEmpty()) {
@@ -87,13 +100,13 @@ public class Create_Job extends JFrame {
                             preparedStatement.setString(2,jobNAME);
 
                             int rowCount = preparedStatement.executeUpdate();
-                            System.out.println(rowCount + "Row Inserted Successfully");
+                            System.out.println(rowCount + "Row Inserted Successfully....");
                             JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");
                         }
 
                     }catch (SQLException sqlException){
                         System.out.println("Insertion Failed " + sqlException.getMessage());
-                        JOptionPane.showMessageDialog(null, "Data Insertion Failed.." , "Error Failed", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Data Already exist(Insertion Failed).." , "Error Failed", JOptionPane.ERROR_MESSAGE);
                     }
 
                 }
@@ -101,18 +114,8 @@ public class Create_Job extends JFrame {
         });
 
 
-
-
-        this.setTitle("Create Job");
-        this.setLayout(null);
-        this.setSize(450,320);
-        this.add(jLabel1);
-        this.add(jLabel2);
-        this.add(jTextField1);
-        this.add(jTextField2);
-        this.add(jButton);
-        this.setVisible(true);
-
+        add(mainPanel);
+        setVisible(true);
     }
 
     public static void main(String[] args) {

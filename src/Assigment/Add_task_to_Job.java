@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Add_task_to_Job extends JFrame {
 
@@ -56,19 +54,54 @@ public class Add_task_to_Job extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-//                Start Database Connection
-
+                // Start Database Connection
                 Connection connection = null;
                 try {
                     connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsa-assignment","root","roshan09876");
                     System.out.println("Connection Successful");
 
-                }catch (SQLException sqlException){
-                    System.out.println("Error Failed Connection " + sqlException.getMessage());
+                    String jobId = jTextField1.getText();
+                    String task = jTextField2.getText();
+                    String dependsOn = jTextField3.getText();
 
+                    // Check if the data exists in both tables
+                    String checkJobSql = "SELECT * FROM create_job WHERE job = ?";
+                    String checkTaskSql = "SELECT * FROM addtask WHERE Task = ?";
+
+                    PreparedStatement jobCheckStmt = connection.prepareStatement(checkJobSql);
+                    jobCheckStmt.setString(1, jobId);
+
+                    PreparedStatement taskCheckStmt = connection.prepareStatement(checkTaskSql);
+                    taskCheckStmt.setString(1, task);
+
+                    ResultSet jobResult = jobCheckStmt.executeQuery();
+                    ResultSet taskResult = taskCheckStmt.executeQuery();
+
+                    if (jobResult.next() && taskResult.next()) {
+                        JOptionPane.showMessageDialog(null, "Access granted!");
+
+                        String insertSql = "INSERT INTO add_task_to_job (jobID, Task, Depends_On) VALUES (?, ?, ?)";
+                        PreparedStatement insertStmt = connection.prepareStatement(insertSql);
+                        insertStmt.setString(1, jobId);
+                        insertStmt.setString(2, task);
+                        insertStmt.setString(3, dependsOn);
+                        insertStmt.executeUpdate();
+                        System.out.println(insertStmt + " Row Inserted ");
+                        JOptionPane.showMessageDialog(null, "Task added successfully");
+
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Access denied!(Data did not Match)","Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                } catch (SQLException sqlException) {
+                    System.out.println("Error Failed Connection " + sqlException.getMessage());
                 }
+                // End Database Connection
             }
         });
+
+
 //        End Database Connection
 
 

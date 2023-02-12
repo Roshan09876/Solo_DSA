@@ -16,30 +16,31 @@ public class Add_Task extends JFrame {
 
         jLabel1 = new JLabel();
         jLabel1.setText("Task id :- ");
-        jLabel1.setBounds(40,50,100,40);
-        jLabel1.setFont(new Font("Arial", Font.PLAIN, 20));
+        jLabel1.setBounds(40,40,100,40);
+        jLabel1.setFont(new Font("Arial", Font.PLAIN, 16));
 
         JTextField jTextField1 = new JTextField();
-        jTextField1.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-        jTextField1.setBounds(140,56,100,25);
+        jTextField1.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+        jTextField1.setBounds(140,50,100,25);
         jTextField1.setColumns(10);
 
 
         jLabel2 = new JLabel();
         jLabel2.setText("Task :- ");
-        jLabel2.setBounds(40,100,100,40);
-        jLabel2.setFont(new Font("Arial", Font.PLAIN, 20));
+        jLabel2.setBounds(40,90,100,40);
+        jLabel2.setFont(new Font("Arial", Font.PLAIN, 16));
 
         JTextField jTextField2 = new JTextField();
-        jTextField2.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-        jTextField2.setBounds(140, 106,150,25);
+        jTextField2.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+        jTextField2.setBounds(140, 100,150,25);
         jTextField2.setColumns(10);
 
 
         JButton jButton = new JButton();
         jButton.setFocusable(false);
         jButton.setText("Ok");
-        jButton.setBounds(120,145,80,25);
+        jButton.setBounds(160,150,80,25);
+        jButton.setFont(new Font("Arial", Font.BOLD, 16));
         jButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,12 +87,12 @@ public class Add_Task extends JFrame {
                             preparedStatement.setString(2, Task);
 
                             int rowCount = preparedStatement.executeUpdate();
-                            System.out.println(rowCount + " row(s) inserted");
+                            System.out.println(rowCount + " Row Inserted Successfully..");
                             JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");
                         }
                     } catch (SQLException sqlException) {
                         System.out.println("Insertion failed: " + sqlException.getMessage());
-                        JOptionPane.showMessageDialog(null, "Data Insertion Failed...", "Error Failed", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Data already exist (Insertion Failed)...", "Error Failed", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
