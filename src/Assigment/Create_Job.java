@@ -45,6 +45,18 @@ public class Create_Job extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                String job = jTextField1.getText();
+                String jobNAME = jTextField2.getText();
+
+                if(job.equals("") && jobNAME.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Enter Job and JobName");
+                }else if(!job.equals("") && jobNAME.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Enter Job Name..");
+                }else if(!jobNAME.equals("") && job.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Enter your Job...");
+                }else {
+                    JOptionPane.showMessageDialog(null, "Data Inserted Successfully..");
+                }
 //                Start Connection in Database
 
                 Connection connection = null;
@@ -62,8 +74,7 @@ public class Create_Job extends JFrame {
 
 
 //                fetching data from textField of Create_Job
-                String job = jTextField1.getText();
-                String jobNAME = jTextField2.getText();
+
 
                 String insertSQL = "INSERT INTO create_job (job, jobNAME) VALUES (?, ?)";
 

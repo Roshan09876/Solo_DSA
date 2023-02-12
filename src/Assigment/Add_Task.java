@@ -46,6 +46,7 @@ public class Add_Task extends JFrame {
 
                 String TaskID = jTextField1.getText();
                 String Task = jTextField2.getText();
+                boolean validationSuccessful = false;
 
                 if(TaskID.equals("") && Task.equals("")){
                     JOptionPane.showMessageDialog(null, "Please fill both of the fields");
@@ -60,45 +61,43 @@ public class Add_Task extends JFrame {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");
+                    validationSuccessful = true;
                 }
 
-
-//                Start Connection in Sql Database
+                // Start Connection in Sql Database
                 Connection connection = null;
                 try {
                     connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsa-assignment", "root", "roshan09876");
 
                     System.out.println("Connection Successful");
 
-
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
                     System.out.println("Failed to connect");
 
                 }
-//                End Connection in SQl Database
+                // End Connection in SQl Database
 
+                // Insert data into the database only if the validation is successful
+                if (validationSuccessful) {
+                    String insertSQL = "INSERT INTO addtask (TaskID, Task) VALUES (?, ?)";
 
- //                fetching text written in the text field in string variable
+                    try {
+                        assert connection != null;
+                        try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+                            preparedStatement.setString(1, TaskID);
+                            preparedStatement.setString(2, Task);
 
-
-                String insertSQL = "INSERT INTO addtask (TaskID, Task) VALUES (?, ?)";
-
-                try {
-                    assert connection != null;
-                    try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
-                        preparedStatement.setString(1, TaskID);
-                        preparedStatement.setString(2, Task);
-
-                        int rowCount = preparedStatement.executeUpdate();
-                        System.out.println(rowCount + " row(s) inserted");
+                            int rowCount = preparedStatement.executeUpdate();
+                            System.out.println(rowCount + " row(s) inserted");
+                        }
+                    } catch (SQLException sqlException) {
+                        System.out.println("Insertion failed: " + sqlException.getMessage());
                     }
-                } catch (SQLException sqlException) {
-                    System.out.println("Insertion failed: " + sqlException.getMessage());
                 }
-
             }
         });
+
 
 
 
