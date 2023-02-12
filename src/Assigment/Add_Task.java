@@ -48,17 +48,14 @@ public class Add_Task extends JFrame {
                 String Task = jTextField2.getText();
                 boolean validationSuccessful = false;
 
-                if(TaskID.equals("") && Task.equals("")){
-                    JOptionPane.showMessageDialog(null, "Please fill both of the fields");
+                if(TaskID.trim().isEmpty() && Task.trim().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please enter both TaskID and Task", "Task Id and Task not filled", JOptionPane.ERROR_MESSAGE);
                 }
-                else if(!TaskID.equals("") && Task.equals("")){
-                    JOptionPane.showMessageDialog(null, "Please Enter you Task ");
+                else if(Task.trim().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please enter Task", "Task not filled", JOptionPane.ERROR_MESSAGE);
                 }
-                else if(TaskID.equals("") && !Task.equals("")){
-                    JOptionPane.showMessageDialog(null, "Please Enter Task-Id ");
-                }
-                else if(TaskID.equals("") == TaskID.equals("") && Task.equals("") == Task.equals("")){
-                    JOptionPane.showMessageDialog(null, "Data already exists in Database..");
+                else if(TaskID.trim().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please enter TaskID", "Task Id not filled", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");

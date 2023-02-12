@@ -47,17 +47,17 @@ public class Create_Job extends JFrame {
 
                 String job = jTextField1.getText();
                 String jobNAME = jTextField2.getText();
+                boolean validationSuccessful = false;
 
-                if(job.equals("") && jobNAME.equals("")){
-                    JOptionPane.showMessageDialog(null, "Please Enter Job and JobName");
-                }else if(!job.equals("") && jobNAME.equals("")){
-                    JOptionPane.showMessageDialog(null, "Please Enter Job Name..");
-                }else if(!jobNAME.equals("") && job.equals("")){
-                    JOptionPane.showMessageDialog(null, "Please Enter your Job...");
-                }else {
-                    JOptionPane.showMessageDialog(null, "Data Inserted Successfully..");
+                if (job.trim().isEmpty() && jobNAME.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please enter both Job and Job Name", "Job and Job Name not filled", JOptionPane.ERROR_MESSAGE);
+                } else if (job.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please enter Job", "Job Not filled", JOptionPane.ERROR_MESSAGE);
+                } else if (jobNAME.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please enter Job Name", "Job name not filled", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    validationSuccessful = true;
                 }
-//                Start Connection in Database
 
                 Connection connection = null;
 
@@ -75,26 +75,30 @@ public class Create_Job extends JFrame {
 
 //                fetching data from textField of Create_Job
 
+                if(validationSuccessful){
 
-                String insertSQL = "INSERT INTO create_job (job, jobNAME) VALUES (?, ?)";
+                    String insertSQL = "INSERT INTO create_job (job, jobNAME) VALUES (?, ?)";
 
-                try{
-                   assert  connection != null;
+                    try{
+                        assert  connection != null;
 
-                   try(PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)){
-                       preparedStatement.setString(1, job);
-                       preparedStatement.setString(2,jobNAME);
+                        try(PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)){
+                            preparedStatement.setString(1, job);
+                            preparedStatement.setString(2,jobNAME);
 
-                       int rowCount = preparedStatement.executeUpdate();
-                       System.out.println(rowCount + "Row Inserted Successfully");
-                   }
+                            int rowCount = preparedStatement.executeUpdate();
+                            System.out.println(rowCount + "Row Inserted Successfully");
+                        }
 
-                }catch (SQLException sqlException){
-                    System.out.println("Insertion Failed " + sqlException.getMessage());
+                    }catch (SQLException sqlException){
+                        System.out.println("Insertion Failed " + sqlException.getMessage());
+
+                    }
 
                 }
             }
         });
+
 
 
 
