@@ -58,7 +58,6 @@ public class Add_Task extends JFrame {
                     JOptionPane.showMessageDialog(null, "Please enter TaskID", "Task Id not filled", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");
                     validationSuccessful = true;
                 }
 
@@ -88,9 +87,11 @@ public class Add_Task extends JFrame {
 
                             int rowCount = preparedStatement.executeUpdate();
                             System.out.println(rowCount + " row(s) inserted");
+                            JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");
                         }
                     } catch (SQLException sqlException) {
                         System.out.println("Insertion failed: " + sqlException.getMessage());
+                        JOptionPane.showMessageDialog(null, "Data Insertion Failed...", "Error Failed", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }

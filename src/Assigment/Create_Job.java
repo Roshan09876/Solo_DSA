@@ -88,11 +88,12 @@ public class Create_Job extends JFrame {
 
                             int rowCount = preparedStatement.executeUpdate();
                             System.out.println(rowCount + "Row Inserted Successfully");
+                            JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");
                         }
 
                     }catch (SQLException sqlException){
                         System.out.println("Insertion Failed " + sqlException.getMessage());
-
+                        JOptionPane.showMessageDialog(null, "Data Insertion Failed.." , "Error Failed", JOptionPane.ERROR_MESSAGE);
                     }
 
                 }
