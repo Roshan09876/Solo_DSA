@@ -44,6 +44,25 @@ public class Add_Task extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                String TaskID = jTextField1.getText();
+                String Task = jTextField2.getText();
+
+                if(TaskID.equals("") && Task.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please fill both of the fields");
+                }
+                else if(!TaskID.equals("") && Task.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Enter you Task ");
+                }
+                else if(TaskID.equals("") && !Task.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Enter Task-Id ");
+                }else if(TaskID.equals("") == TaskID.equals("")){
+                    JOptionPane.showMessageDialog(null, "Id is already taken...");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");
+                }
+
+
 //                Start Connection in Sql Database
                 Connection connection = null;
                 try {
@@ -61,8 +80,7 @@ public class Add_Task extends JFrame {
 
 
  //                fetching text written in the text field in string variable
-                String TaskID = jTextField1.getText();
-                String Task = jTextField2.getText();
+
 
                 String insertSQL = "INSERT INTO addtask (TaskID, Task) VALUES (?, ?)";
 
