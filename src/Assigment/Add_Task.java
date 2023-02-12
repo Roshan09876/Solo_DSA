@@ -56,8 +56,9 @@ public class Add_Task extends JFrame {
                 }
                 else if(TaskID.equals("") && !Task.equals("")){
                     JOptionPane.showMessageDialog(null, "Please Enter Task-Id ");
-                }else if(TaskID.equals("") == TaskID.equals("")){
-                    JOptionPane.showMessageDialog(null, "Id is already taken...");
+                }
+                else if(TaskID.equals("") == TaskID.equals("") && Task.equals("") == Task.equals("")){
+                    JOptionPane.showMessageDialog(null, "Data already exists in Database..");
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Successfully Data Inserted...");
