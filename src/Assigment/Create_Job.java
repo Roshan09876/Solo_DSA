@@ -19,7 +19,6 @@ public class Create_Job extends JFrame {
 
         setTitle("Create Job");
         setSize(450, 320);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();

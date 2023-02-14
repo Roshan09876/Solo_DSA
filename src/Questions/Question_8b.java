@@ -8,7 +8,7 @@ package Questions;
 //Explanation: Missing even numbers on the list are 4, 8, 10, 12, 14, 16, 20 and so on and
 // kth missing number is on 6th place of the list i.e. 16
 
-public class Eight_b {
+public class Question_8b {
 
     public static int kthMissingEvenNumber(int[] a, int k) {
         int n = a.length;
