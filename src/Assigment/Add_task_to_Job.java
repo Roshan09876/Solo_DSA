@@ -67,6 +67,7 @@ public class Add_task_to_Job extends JFrame {
                     // Check if the data exists in both tables
                     String checkJobSql = "SELECT * FROM create_job WHERE job = ?";
                     String checkTaskSql = "SELECT * FROM addtask WHERE Task = ?";
+                    String checkJobNameSql = "SELECT * FROM create_job WHERE jobNAME = ?";
 
                     PreparedStatement jobCheckStmt = connection.prepareStatement(checkJobSql);
                     jobCheckStmt.setString(1, jobId);
@@ -74,10 +75,14 @@ public class Add_task_to_Job extends JFrame {
                     PreparedStatement taskCheckStmt = connection.prepareStatement(checkTaskSql);
                     taskCheckStmt.setString(1, task);
 
+                    PreparedStatement jobNameStmt = connection.prepareStatement(checkJobNameSql);
+                    jobNameStmt.setString(1,dependsOn);
+
                     ResultSet jobResult = jobCheckStmt.executeQuery();
                     ResultSet taskResult = taskCheckStmt.executeQuery();
+                    ResultSet jobName = jobNameStmt.executeQuery();
 
-                    if (jobResult.next() && taskResult.next()) {
+                    if (jobResult.next() && taskResult.next() && jobName.next()) {
                         JOptionPane.showMessageDialog(null, "Access granted!");
 
                         String insertSql = "INSERT INTO add_task_to_job (jobID, Task, Depends_On) VALUES (?, ?, ?)";
