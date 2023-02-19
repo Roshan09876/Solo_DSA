@@ -24,7 +24,7 @@ class LFU {
         this.cache = new HashMap<Integer, Pair>();
     }
 
-    // Self made heap tp Rearranges
+    // Selfmade heap tp Rearranges
     // the nodes in order to maintain the heap property
     public void increment(int value)
     {

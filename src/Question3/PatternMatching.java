@@ -8,65 +8,48 @@
 //        Output: true
 
 
-        package Question3;
+package Question3;
 
 public class PatternMatching {
-    public static boolean match(String string, String pattern) {
-        int s = 0, p = 0, match = 0, starIdx = -1;
-        while (s < string.length()) {
-            // If the pattern character exists, or it's a '#'
-            if (p < pattern.length() && (pattern.charAt(p) == '@' || pattern.charAt(p) == '#' || string.charAt(s) == pattern.charAt(p))) {
-                if (pattern.charAt(p) == '@') {
-                    match = s;
-                    p++;
-                    while (p < pattern.length() && pattern.charAt(p) == '#') {
-                        match++;
-                        p++;
-                    }
-                    return match == string.length();
-                } else if (pattern.charAt(p) == '#') {
-                    s++;
-                    p++;
-                } else {
-                    s++;
-                    p++;
-                }
-            }
-            // If there's a '*', this is also a match, but we will move
-            // back the pattern pointer to '*' and record the string pointer.
-            else if (p < pattern.length() && pattern.charAt(p) == '*') {
-                starIdx = p;
-                match = s;
-                p++;
-            }
-            // If there's no match and no '*', return false
-            else {
-                if (starIdx == -1) {
-                    return false;
-                }
-                p = starIdx + 1;
-                match++;
-                s = match;
+    public static boolean isMatch(String a, String pattern) {
+        int n = a.length();
+        int m = pattern.length();
+        int i = 0, j = 0, star = -1, lastMatch = -1;
+        while (i < n) {
+            if (j < m && (a.charAt(i) == pattern.charAt(j) || pattern.charAt(j) == '#')) {
+                i++;
+                j++;
+            } else if (j < m && pattern.charAt(j) == '@') {
+                lastMatch = i;
+                star = j;
+                j++;
+            } else if (star != -1) {
+                j = star + 1;
+                lastMatch++;
+                i = lastMatch;
+            } else {
+                return false;
             }
         }
-        // Check the remaining characters in the pattern
-        while (p < pattern.length() && pattern.charAt(p) == '*') {
-            p++;
+        while (j < m && pattern.charAt(j) == '@') {
+            j++;
         }
-        return p == pattern.length();
+        return j == m;
     }
+
 
     public static void main(String[] args) {
         String a = "tt";
         String pattern = "@";
-        System.out.println(match(a, pattern)); // Output: true
+        System.out.println(isMatch(a, pattern)); // Output: true
 
         a = "ta";
         pattern = "t";
-        System.out.println(match(a, pattern)); // Output: false
+        System.out.println(isMatch(a, pattern)); // Output: false
 
         a = "ta";
         pattern = "t#";
-        System.out.println(match(a, pattern)); // Output: true
+        System.out.println(isMatch(a, pattern)); // Output: true
+
     }
 }
