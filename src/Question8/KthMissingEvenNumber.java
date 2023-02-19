@@ -3,7 +3,6 @@
 //        Input a[] ={0, 2, 6, 18, 22} k=6
 //        Output: 16 examples:
 //        Explanation: Missing even numbers on the list are 4, 8, 10, 12, 14, 16, 20 and so on and kth missing number is on 6th place of the list i.e. 16
-//
 
 package Question8;
 public class KthMissingEvenNumber {
