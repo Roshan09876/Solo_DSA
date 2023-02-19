@@ -21,7 +21,6 @@ public class Add_task_to_Job extends JFrame {
         jTextField1.setColumns(10);
 
 
-
         JLabel jLabel2 = new JLabel();
         jLabel2.setText("Task :- ");
         jLabel2.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -43,7 +42,6 @@ public class Add_task_to_Job extends JFrame {
         jTextField3.setBounds(180,117,130,28);
         jTextField3.setFont(new Font("Comic Sans MS", Font.PLAIN,15));
         jTextField3.setColumns(10);
-
 
 
         JButton jButton = new JButton();
