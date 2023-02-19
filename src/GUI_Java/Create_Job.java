@@ -1,4 +1,4 @@
-package Assigment;
+package GUI_Java;
 
 import java.awt.Font;
 import java.awt.GridBagConstraints;

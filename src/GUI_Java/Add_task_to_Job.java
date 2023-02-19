@@ -1,4 +1,4 @@
-package Assigment;
+package GUI_Java;
 
 import javax.swing.*;
 import java.awt.*;
