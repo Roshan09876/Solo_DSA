@@ -1,4 +1,4 @@
-package GUI_Java;
+package GUI_Question9;
 
 import java.awt.Font;
 import java.awt.GridBagConstraints;
