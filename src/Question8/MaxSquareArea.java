@@ -8,7 +8,7 @@
 
 
 
-package Question7;
+package Question8;
 
 import java.util.Stack;
 
