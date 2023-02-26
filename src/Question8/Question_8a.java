@@ -12,7 +12,7 @@ package Question8;
 
 import java.util.Stack;
 
-public class MaxSquareArea {
+public class Question_8a {
     public int findMaxSquare(int[][] matrix) {
         int maxArea = 0;
         int m = matrix.length;
@@ -64,7 +64,7 @@ public class MaxSquareArea {
                 {0, 0, 0, 0, 1},
                 {0, 0, 0, 1, 1},
                 {0, 1, 0, 1, 1}};
-        MaxSquareArea solution = new MaxSquareArea();
+        Question_8a solution = new Question_8a();
         System.out.println("Max square area: " + solution.findMaxSquare(matrix));
     }
 }

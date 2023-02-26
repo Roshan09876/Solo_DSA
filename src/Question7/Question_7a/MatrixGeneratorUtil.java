@@ -1,4 +1,4 @@
-package Question7;
+package Question7.Question_7a;
 
 import java.util.Random;
 

@@ -6,7 +6,7 @@
 //        kth missing number is on 6th place of the list i.e. 16
 
 package Question8;
-public class KthMissingEvenNumber {
+public class Question_8b {
     public int findKthMissingEvenNumber(int[] arr, int k) {
         int missingCount = 0;
         int nextExpectedNumber = arr[0];
@@ -34,7 +34,7 @@ public class KthMissingEvenNumber {
     public static void main(String[] args) {
         int[] arr = {0, 2, 6, 18, 22};
         int k = 6;
-        KthMissingEvenNumber solution = new KthMissingEvenNumber();
+        Question_8b solution = new Question_8b();
         System.out.println("Kth missing even number: " + solution.findKthMissingEvenNumber(arr, k));
     }
 }

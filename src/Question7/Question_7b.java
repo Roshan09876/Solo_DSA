@@ -1,5 +1,7 @@
 package Question7;
 
+//Write multithreaded web crawler
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -8,7 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class WebCrawler {
+public class Question_7b {
     private static final int NUM_THREADS = 10; // number of threads to use
 
     public static void main(String[] args) {
