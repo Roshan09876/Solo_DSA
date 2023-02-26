@@ -10,7 +10,7 @@
 
 package Question3;
 
-public class PatternMatching {
+public class Question_3b {
     public static boolean isMatch(String a, String pattern) {
         int n = a.length();
         int m = pattern.length();

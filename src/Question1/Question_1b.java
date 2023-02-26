@@ -19,7 +19,7 @@ package Question1;
 
 import java.util.*;
 
-public class Question1b {
+public class Question_1b {
     public static List<Integer> getImpactedDevices(int[][] edges, int targetDevice) {
         Map<Integer, List<Integer>> graph = new HashMap<>();
         for (int[] edge : edges) {

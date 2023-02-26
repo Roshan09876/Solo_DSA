@@ -10,7 +10,7 @@ package Question5;
 
 import java.util.*;
 
-public class BarGraph {
+public class Question_5a {
 
     public int[][] getKeyCoordinates(int[][] height) {
         // Store the start and end points of each rectangle in a TreeMap
@@ -39,7 +39,7 @@ public class BarGraph {
     }
 
     public static void main(String[] args) {
-        BarGraph obj = new BarGraph() ;
+        Question_5a obj = new Question_5a() ;
         int[][] height = {{1,4,10},{2,5,15},{5,8,12},{9,11,1},{11,13,15}};
         int[][] res = obj.getKeyCoordinates(height);
         System.out.println(Arrays.deepToString(res));

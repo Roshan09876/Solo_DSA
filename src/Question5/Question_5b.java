@@ -12,7 +12,7 @@ package Question5;
 
 import java.util.*;
 
-public class BatteryReplacement {
+public class Question_5b {
 
     public static int minBatteryReplacements(int[][] serviceCenters, int targetMiles, int startChargeCapacity) {
         // create a priority queue to store the service centers based on their battery capacity

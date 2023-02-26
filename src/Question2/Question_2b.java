@@ -7,7 +7,6 @@
 
 
 package Question2;
-import java.util.*;
 
 class
 TreeNode {

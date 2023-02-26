@@ -9,7 +9,7 @@ package Question3;
 
 import java.util.Arrays;
 
-public class MinProductDifference {
+public class Question_3a {
     public static int minProductDifference(int[] arr) {
         Arrays.sort(arr); // sort the input array
         int n = arr.length;
