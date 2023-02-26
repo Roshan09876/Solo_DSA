@@ -1,11 +1,11 @@
-package GUI.Controller;
+package Question9_GUI.Controller;
 
-import GUI.Database.DbConnection;
-import GUI.Model.Job;
-import GUI.Model.Task;
-import GUI.Model.User;
-import GUI.Model.task_screen;
-import GUI.Views.LoginScreen;
+import Question9_GUI.Database.DbConnection;
+import Question9_GUI.Model.Job;
+import Question9_GUI.Model.Task;
+import Question9_GUI.Model.User;
+import Question9_GUI.Model.task_screen;
+import Question9_GUI.Views.LoginScreen;
 
 
 import java.sql.PreparedStatement;

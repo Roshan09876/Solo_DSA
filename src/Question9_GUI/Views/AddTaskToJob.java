@@ -1,7 +1,7 @@
-package GUI.Views;
+package Question9_GUI.Views;
 
-import GUI.Controller.UserController;
-import GUI.Model.task_screen;
+import Question9_GUI.Controller.UserController;
+import Question9_GUI.Model.task_screen;
 
 import javax.swing.*;
 import java.awt.*;

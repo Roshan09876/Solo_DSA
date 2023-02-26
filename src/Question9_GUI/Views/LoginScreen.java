@@ -1,8 +1,8 @@
-package GUI.Views;
+package Question9_GUI.Views;
 
 
-import GUI.Controller.UserController;
-import GUI.Model.User;
+import Question9_GUI.Controller.UserController;
+import Question9_GUI.Model.User;
 
 import javax.swing.*;
 import java.awt.*;
