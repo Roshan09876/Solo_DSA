@@ -36,7 +36,7 @@ class Solution {
     }
 }
 
-public class ServiceCenters {
+public class Question2b {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(0);
         root.left = new TreeNode(0);

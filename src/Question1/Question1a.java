@@ -15,7 +15,7 @@ package Question1;
 
 import java.util.*;
 
-public class CheapestRoute {
+public class Question1a {
     private static final int INF = Integer.MAX_VALUE;
 
     public static int findCheapestRoute(int[][] edges, int[] charges, int source, int destination, int timeConstraint) {

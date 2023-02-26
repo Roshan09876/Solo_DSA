@@ -10,7 +10,7 @@ package Question2;
 
 import java.util.*; // Importing the java.util package for the use of List and Map classes
 
-public class Shortest {
+public class Question2a {
     static int[] values; // An array to store the values of each species
     static int[] parent; // An array to store the parent of each species
     static int[] ancestor; // An array to store the nearest relative prime ancestor of each species
@@ -31,7 +31,7 @@ public class Shortest {
 
     static int[] getAncestor(int[] values, int[][] edges) {
         int n = values.length; // Store the number of species
-        Shortest.values = values; // Set the values array
+        Question2a.values = values; // Set the values array
         parent = new int[n]; // Initialize the parent array
         ancestor = new int[n]; // Initialize the ancestor array
         graph = new HashMap<>(); // Initialize the graph map
